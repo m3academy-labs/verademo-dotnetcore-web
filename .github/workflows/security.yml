@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
     
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
@@ -32,7 +32,7 @@ jobs:
           zip -r upload.zip app/bin/Debug/netcoreapp3.1/
 
       - name: save artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: scan-target
           path: upload.zip
