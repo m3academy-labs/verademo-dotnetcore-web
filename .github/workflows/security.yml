@@ -1,0 +1,38 @@
+name: security-actions
+
+on:
+  workflow_dispatch:
+    
+jobs:
+  checkout-and-build:
+    runs-on: windows-2022
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+    
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '3.1.x'
+    
+      - name: Build the App
+        working-directory: ./app/
+        run: dotnet publish -c Debug -p:UseAppHost=false
+
+      #- name: Zip Application Files 
+      #  uses: vimtor/action-zip@v1
+      #  with:
+      #    files: app/bin/Debug/netcoreapp3.1/
+      #    dest: verademodotnetcore.zip
+
+      - name: zip application files 
+        run: |
+          sudo apt-get install zip -y
+          zip -r upload.zip app/bin/Debug/netcoreapp3.1/
+
+      - name: save artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: scan-target
+          path: upload.zip
