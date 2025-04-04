@@ -20,16 +20,11 @@ jobs:
         working-directory: ./app/
         run: dotnet publish -c Debug -p:UseAppHost=false
 
-      #- name: Zip Application Files 
-      #  uses: vimtor/action-zip@v1
-      #  with:
-      #    files: app/bin/Debug/netcoreapp3.1/
-      #    dest: verademodotnetcore.zip
-
-      - name: zip application files 
-        run: |
-          sudo apt-get install zip -y
-          zip -r upload.zip app/bin/Debug/netcoreapp3.1/
+      - name: Zip Application Files 
+        uses: vimtor/action-zip@v1
+        with:
+          files: app/bin/Debug/netcoreapp3.1/
+          dest: verademodotnetcore.zip
 
       - name: save artifact
         uses: actions/upload-artifact@v4
