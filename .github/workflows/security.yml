@@ -67,19 +67,6 @@ jobs:
         with:
           name: scan-target
 
-      - name: upload and scan 
-        uses: veracode/veracode-uploadandscan-action@0.2.7
-        with:
-          appname: 'm3academy-javascript-web'
-          createprofile: true
-          teams: 'M3Academy'
-          filepath: 'upload.zip'
-          vid: '${{ secrets.VID }}'
-          vkey: '${{ secrets.VKEY }}'
-          version: "${{ github.run_id }}"
-          scantimeout: 0
-          criticality: 'High'
-
       - name: pipeline-scan action step
         id: pipeline-scan
         uses: veracode/Veracode-pipeline-scan-action@v1.0.18
