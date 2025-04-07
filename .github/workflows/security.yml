@@ -20,7 +20,8 @@ jobs:
         working-directory: ./app/
         run: | 
           dotnet publish -c Debug -p:UseAppHost=false
-          dir app/bin/Debug/net8.0/
+          dir bin/Debug/net8.0/
+          dir bin/Debug/net8.0/publish
 
       - name: Zip Application Files 
         uses: vimtor/action-zip@v1
