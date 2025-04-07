@@ -76,3 +76,4 @@ jobs:
           file: "upload.zip"
           fail_build: "true"
           issue_details: true
+          include: "app.dll"
