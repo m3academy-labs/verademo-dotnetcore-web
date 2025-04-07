@@ -18,13 +18,15 @@ jobs:
     
       - name: Build the App
         working-directory: ./app/
-        run: dotnet publish -c Debug -o app/bin/Debug/ -p:UseAppHost=false
+        run: | 
+          dotnet publish -c Debug -p:UseAppHost=false
+          dir app/bin/Debug/net8.0/
 
-      #- name: Zip Application Files 
-      #  uses: vimtor/action-zip@v1
-      #  with:
-      #    files: app/bin/Debug/netcoreapp3.1/
-      #    dest: verademodotnetcore.zip
+      - name: Zip Application Files 
+        uses: vimtor/action-zip@v1
+        with:
+          files: app/bin/Debug/net8.0/
+          dest: verademodotnetcore.zip
 
       - name: save artifact
         uses: actions/upload-artifact@v4
