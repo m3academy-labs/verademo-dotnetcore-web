@@ -26,10 +26,10 @@ jobs:
         uses: vimtor/action-zip@v1
         with:
           files: app/bin/Debug/net8.0/
-          dest: verademodotnetcore.zip
+          dest: upload.zip
 
       - name: save artifact
         uses: actions/upload-artifact@v4
         with:
           name: scan-target
-          path: dir bin/Debug/net8.0/publish
+          path: upload.zip
