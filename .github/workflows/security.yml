@@ -25,7 +25,7 @@ jobs:
       - name: Zip Application Files 
         uses: vimtor/action-zip@v1
         with:
-          files: app/bin/Debug/net8.0/
+          files: app/bin/Debug/net8.0/publish
           dest: upload.zip
 
       - name: save artifact
