@@ -75,20 +75,7 @@ jobs:
           scantimeout: 0
           criticality: 'High'
           createsandbox: true
-          sandboxname: '${{ github.ref }}'	
-          
-      - name: upload and scan 
-        uses: veracode/veracode-uploadandscan-action@0.2.7
-        with:
-          appname: 'm3academy-javascript-web'
-          createprofile: true
-          teams: 'M3Academy'
-          filepath: 'upload.zip'
-          vid: '${{ secrets.VID }}'
-          vkey: '${{ secrets.VKEY }}'
-          version: "${{ github.run_id }}"
-          scantimeout: 0
-          criticality: 'High'
+          sandboxname: '${{ github.ref }}'
 
   veracode-sast-policy-pipeline-scan:
     name: veracode policy and pipeline scan
